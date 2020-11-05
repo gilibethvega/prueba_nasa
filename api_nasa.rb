@@ -2,8 +2,9 @@ require 'uri'
 require 'net/http'
 require 'json'
 
-def request(url_requested)
-  url = URI(url_requested)
+def request(url, api_key)
+  url_concat = url + "&api_key=" + api_key
+  url = URI(url_concat)
   http = Net::HTTP.new(url.host, url.port)
   http.use_ssl = true
   http.verify_mode = OpenSSL::SSL::VERIFY_PEER
@@ -14,7 +15,9 @@ def request(url_requested)
   return JSON.parse(response.body)
 end
 
-data = request('https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=NuBlb8sZRP2vrbWW2X4oPqDcw6wV2DpgWmltScu6')
+data = request('https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&page=1', 'NuBlb8sZRP2vrbWW2X4oPqDcw6wV2DpgWmltScu6')
+
+
 
 photos = data['photos']
 
