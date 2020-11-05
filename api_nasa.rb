@@ -14,20 +14,15 @@ def request(url_requested)
   return JSON.parse(response.body)
 end
 
-data = request('https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=NuBlb8sZRP2vrbWW2X4oPqDcw6wV2DpgWmltScu6').[0..5]
+data = request('https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=NuBlb8sZRP2vrbWW2X4oPqDcw6wV2DpgWmltScu6')
 
 photos = data['photos']
-#photos.each do |photo|
-  #puts photo["img_src"]
-#end
-
-n = photos.count
 
 puts "<ul>"
-(n_interno-2).times do |i|
-  i+=1
-  puts "\t<li> #{photos} </li>"
+photos.each do |photo|
+  puts "\t<li><img src=#{photo["img_src"]}></li>"
 end
 puts "</ul>"
+
 
 
