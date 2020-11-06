@@ -34,7 +34,7 @@ end
 
 def photos_count(data)
   photos = data['photos']
-    total = []
+  total = []
   photos.each do |photo|
     total.push photo["camera"]['name']
   end
