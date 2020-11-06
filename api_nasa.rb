@@ -17,7 +17,7 @@ end
 
 def build_web_page(data)
   photos = data['photos']
-  begin_html = ["<html>","\t<head>","\t\t<title>Fotos Nasa | Prueba Gili :)</title>","\t\t<body>", "\t\t<h1>Desafío {APIs} by Gilibeth Vega","\t\t\t<ul>"]
+  begin_html = ["<html>","\t<head>","\t\t<title>Fotos Nasa | Prueba Gili :)</title>","\t\t<body>", "\t\t\t<h1>Desafío {APIs} by Gilibeth Vega","\t\t\t<ul>"]
   final_html= ["\t\t\t</ul>", "\t\t</head>", "\t</body>", "</html>"]
   middle = []
   half_html = []
