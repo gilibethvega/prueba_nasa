@@ -23,7 +23,7 @@ def build_web_page(data)
   half_html = []
   total_html = []
   photos.each do |photo|
-    middle.push ("\t\t\t\t<li><img src=#{photo["img_src"]} width='500' height='200'></li>")
+    middle.push ("\t\t\t<li><img src=#{photo["img_src"]} width='500' height='200'></li>")
   end
   half_html = begin_html.push middle
   total_html = half_html.push final_html
