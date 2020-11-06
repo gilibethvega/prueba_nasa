@@ -17,13 +17,13 @@ end
 
 def build_web_page(data)
   photos = data['photos']
-  begin_html = ["<html>","\t<head>", "\t\t<body>", "\t\t\t<ul>"]
+  begin_html = ["<html>","\t<head>","\t\t<title>Fotos Nasa | Prueba Gili :)</title>","\t\t<body>", "\t\t<h1>Desafío {APIs} by Gilibeth Vega","\t\t\t<ul>"]
   final_html= ["\t\t\t</ul>", "\t\t</head>", "\t</body>", "</html>"]
   middle = []
   half_html = []
   total_html = []
   photos.each do |photo|
-    middle.push ("\t\t\t\t<li><img src=#{photo["img_src"]} width='500' height='200></li>")
+    middle.push ("\t\t\t\t<li><img src=#{photo["img_src"]} width='500' height='200'></li>")
   end
   half_html = begin_html.push middle
   total_html = half_html.push final_html
