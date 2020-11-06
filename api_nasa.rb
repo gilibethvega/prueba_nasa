@@ -17,8 +17,8 @@ end
 
 def build_web_page(data)
   photos = data['photos']
-  begin_html = ["<html>","\t<head>","\t\t<title>Fotos Nasa | Prueba Gili :)</title>","\t\t<body>", "\t\t\t<h1>Desafío {APIs} by Gilibeth Vega","\t\t\t<ul>"]
-  final_html= ["\t\t\t</ul>", "\t\t</head>", "\t</body>", "</html>"]
+  begin_html = ["<html>","\t<head>","\t\t<title>Fotos Nasa | Prueba Gili :)</title>","\t</head>","\t<body>", "\t\t<h1>Desafío {APIs} by Gilibeth Vega</h1>","\t\t<ul style='list-style-type:none;'>"]
+  final_html= ["\t\t</ul>", "\t</body>", "</html>"]
   middle = []
   half_html = []
   total_html = []
@@ -32,8 +32,22 @@ def build_web_page(data)
   File.write('index.html', total_html.join("\n"))
 end
 
+def photos_count(data)
+  photos = data['photos']
+    total = []
+  photos.each do |photo|
+    total.push photo["camera"]['name']
+  end
+  new_hash = total.group_by { |x| x }
+  new_hash.each do |k,v|
+    new_hash[k] = v.count
+  end
+end
+
+
 data = request('https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&page=1', 'NuBlb8sZRP2vrbWW2X4oPqDcw6wV2DpgWmltScu6')
 
 build_web_page(data)
 
+print photos_count(data)
 
